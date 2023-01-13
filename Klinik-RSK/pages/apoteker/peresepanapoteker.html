@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klinik RSK</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="../../plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+    <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+      </ul>
+    
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+
+      <!-- Nav Item - User Information -->
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small">Andani Iqbal</span>
+        </a>
+      <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="login.html" data-toggle="modal" data-target="#logoutModal">
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Detail Profil
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="login.html" data-toggle="modal" data-target="#logoutModal">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              Logout
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="../../index-apoteker.html" class="brand-link">
+      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Klinik RSK</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <a href="#" class="d-block">Apoteker</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+              with font-awesome or any other icon font library -->
+          <li class="nav-item active">
+            <a href="../../index-apoteker.html" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="dobatapoteker.html" class="nav-link">
+              <i class="nav-icon fas fa-regular fa-table"></i>
+              <p>
+                Data Obat
+              </p>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a href="peresepanapoteker.html" class="nav-link">
+              <i class="nav-icon fas fa-regeluar fa-receipt"></i>
+              <p>
+                Peresepan
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="indeksapoteker.html" class="nav-link">
+              <i class="nav-icon fas fa-solid fa-file"></i>
+              <p>
+                Indeks Obat
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Peresepan</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+              <li class="breadcrumb-item active">Peresepan</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="d-sm-flex align-items-center justify-content-between">
+                  <h3 class="card-title">Peresepan</h3>
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="menunggu-tab" data-toggle="tab" href="#menunggu" role="tab" aria-controls="menunggu" aria-selected="true">Menunggu</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="selesai1-tab" data-toggle="tab" href="#selesai1" role="tab" aria-controls="selesai1" aria-selected="false">Selesai</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="menunggu" role="tabpanel" aria-labelledby="menunggu-tab">
+                    <table id="tableperesepan1" class="table table-bordered table-hover">
+                      <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Id Peresepan</th>
+                        <th>No RM</th>
+                        <th>Nama Pasien</th>
+                        <th>JK</th>
+                        <th>DPJP</th>
+                        <th>Status Resep</th>
+                        <th>Aksi</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>R00001</td>
+                        <td>0000001</td>
+                        <td>Wawan Sukamaju</td>
+                        <td>L</td>
+                        <td>dr. Jauhar</td>
+                        <td><badge class="badge badge-warning">Menunggu</badge></td>
+                        <td>
+                          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModalCenterProsesObat">Proses Resep</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>R00001</td>
+                        <td>0000001</td>
+                        <td>Wawan Sukamaju</td>
+                        <td>L</td>
+                        <td>dr. Jauhar</td>
+                        <td><badge class="badge badge-warning">Menunggu</badge></td>
+                        <td>
+                          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModalCenterProsesObat">Proses Resep</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>R00001</td>
+                        <td>0000001</td>
+                        <td>Wawan Sukamaju</td>
+                        <td>L</td>
+                        <td>dr. Jauhar</td>
+                        <td><badge class="badge badge-warning">Menunggu</badge></td>
+                        <td>
+                          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModalCenterProsesObat">Proses Resep</button>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="tab-pane fade" id="selesai1" role="tabpanel" aria-labelledby="selesai1-tab">
+                    <table id="tableperesepan2" class="table table-bordered table-hover">
+                      <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Id Peresepan</th>
+                        <th>No RM</th>
+                        <th>Nama Pasien</th>
+                        <th>JK</th>
+                        <th>DPJP</th>
+                        <th>Status</th>
+                        <th>Detail</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>R00001</td>
+                        <td>0000001</td>
+                        <td>Wawan Sukamaju</td>
+                        <td>L</td>
+                        <td>dr. Jauhar</td>
+                        <td><badge class="badge badge-success">Selesai</badge></td>
+                        <td>
+                          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModalCenterSelesaiObat">Lihat Detail</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>R00001</td>
+                        <td>0000001</td>
+                        <td>Wawan Sukamaju</td>
+                        <td>L</td>
+                        <td>dr. Jauhar</td>
+                        <td><badge class="badge badge-success">Selesai</badge></td>
+                        <td>
+                          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModalCenterSelesaiObat">Lihat Detail</button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>R00001</td>
+                        <td>0000001</td>
+                        <td>Wawan Sukamaju</td>
+                        <td>L</td>
+                        <td>dr. Jauhar</td>
+                        <td><badge class="badge badge-success">Selesai</badge></td>
+                        <td>
+                          <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModalCenterSelesaiObat">Lihat Detail</button>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2022 <a href="#">Rumah Sehat Keluarga Jember</a>.</strong>
+    All rights reserved.
+  </footer>
+
+  <!-- Modal Detail Peresepan Proses -->
+
+  <div class="modal fade bd-example-modal-lg" id="exampleModalCenterProsesObat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Detail Peresepan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <table class="table table-sm">
+            <tbody>
+              <tr>
+                <td class="pl-4">Id Resep</td>
+                <td class="text-right pr-4">000001</td>
+              </tr>
+              <tr>
+                <td class="pl-4">Tanggal Peresepan</td>
+                <td class="text-right pr-4">11-09-2022</td>
+              </tr>
+              <tr>
+                <td class="pl-4">No RM</td>
+                <td class="text-right pr-4">000001</td>
+              </tr>
+              <tr>
+                <td class="pl-4">Nama Pasien</td>
+                <td class="text-right pr-4">Wawan Sukamaju</td>
+              <tr>
+                <td class="pl-4">Poli</td>
+                <td class="text-right pr-4">Umum</td>
+              </tr>
+              <tr>
+                <td class="pl-4">Akses Bayar</td>
+                <td class="text-right pr-4">BPJS</td>
+              </tr>
+              </tr>
+              <tr>
+                <td class="pl-4">DPJP</td>
+                <td class="text-right pr-4">dr. Jauhar</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="text-center">Data Resep Obat</p>
+          <table class="table table-sm">
+            <thead>
+                <th class="pl-4">Nama Obat</th>
+                <th class="pr-4">Satuan</th>
+                <th class="pr-4">Jumlah</th>
+                <th class="pr-4">Keterangan</th>
+                <th class="pr-4">Harga Satuan</th>
+                <th class="pr-4">Harga</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="pl-4">Bodrexin</td>
+                <td class="pr-4">Tablet</td>
+                <td class="pr-4">1</td>
+                <td class="pr-4">3x1/Hari Setelah Makan</td>
+                <td class="pr-4">Rp. 12.000</td>
+                <td class="pr-4">Rp. 12.000</td>
+              </tr>
+              <tr>
+                <td class="pl-4">Paramex</td>
+                <td class="pr-4">Tablet</td>
+                <td class="pr-4">2</td>
+                <td class="pr-4">3x1/Hari Setelah Makan</td>
+                <td class="pr-4">Rp. 10.000</td>
+                <td class="pr-4">Rp. 20.000</td>
+              </tr>
+              <tr>
+                <th colspan="4" class="pl-4"></th>
+                <th class="">Total Harga</th>
+                <th class="pr-4">Rp. 32.000</th>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Konfirmasi Pemberian Resep</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Detail Persepan Selesai -->
+
+  <div class="modal fade bd-example-modal-lg" id="exampleModalCenterSelesaiObat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Detail Peresepan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <table class="table table-sm">
+            <tbody>
+              <tr>
+                <td class="pl-4">Id Resep</td>
+                <td class="text-right pr-4">000001</td>
+              </tr>
+              <tr>
+                <td class="pl-4">Tanggal Peresepan</td>
+                <td class="text-right pr-4">11-09-2022</td>
+              </tr>
+              <tr>
+                <td class="pl-4">No RM</td>
+                <td class="text-right pr-4">000001</td>
+              </tr>
+              <tr>
+                <td class="pl-4">Nama Pasien</td>
+                <td class="text-right pr-4">Wawan Sukamaju</td>
+              <tr>
+                <td class="pl-4">Poli</td>
+                <td class="text-right pr-4">Umum</td>
+              </tr>
+              <tr>
+                <td class="pl-4">Akses Bayar</td>
+                <td class="text-right pr-4">BPJS</td>
+              </tr>
+              </tr>
+              <tr>
+                <td class="pl-4">DPJP</td>
+                <td class="text-right pr-4">dr. Jauhar</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="text-center">Data Resep Obat</p>
+          <table class="table table-sm">
+            <thead>
+                <th class="pl-4">Nama Obat</th>
+                <th class="pr-4">Satuan</th>
+                <th class="pr-4">Jumlah</th>
+                <th class="pr-4">Keterangan</th>
+                <th class="pr-4">Harga Satuan</th>
+                <th class="pr-4">Harga</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="pl-4">Bodrexin</td>
+                <td class="pr-4">Tablet</td>
+                <td class="pr-4">1</td>
+                <td class="pr-4">3x1/Hari Setelah Makan</td>
+                <td class="pr-4">Rp. 12.000</td>
+                <td class="pr-4">Rp. 12.000</td>
+              </tr>
+              <tr>
+                <td class="pl-4">Paramex</td>
+                <td class="pr-4">Tablet</td>
+                <td class="pr-4">2</td>
+                <td class="pr-4">3x1/Hari Setelah Makan</td>
+                <td class="pr-4">Rp. 10.000</td>
+                <td class="pr-4">Rp. 20.000</td>
+              </tr>
+              <tr>
+                <th colspan="4" class="pl-4"></th>
+                <th class="">Total Harga</th>
+                <th class="pr-4">Rp. 32.000</th>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../../plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="../../plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="../../plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="../../plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../../plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="../../plugins/moment/moment.min.js"></script>
+<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.js"></script>
+<!-- PAGE PLUGINS -->
+
+<!-- DataTables  & Plugins -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../../plugins/jszip/jszip.min.js"></script>
+<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script>
+  $(function () {
+    $("#tableperesepan1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $("#tableperesepan2").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+</body>
+</html>
