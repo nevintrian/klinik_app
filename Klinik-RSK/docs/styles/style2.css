@@ -1,26 +1,24 @@
-body{
-    background: #eaeaea;
-  }
-  
-  form{
-    background: #ffffff;
-    margin: 50px 40px;
-  }
-  
-
-  .step{
-    height: 30px;
-    width: 30px;
-    line-height: 30px;
-    margin: 0 2px;
-    color: white;
-    background: #6578CA;
-    border-radius: 50%;
-    display: inline-block;
-    opacity: 0.25;
-  }
-
-  .readonly{
-    background-color: #000;
+body {
+  background: #eaeaea;
 }
 
+form {
+  background: #ffffff;
+  margin: 50px 40px;
+}
+
+.step {
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  margin: 0 2px;
+  color: white;
+  background: #6578ca;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.25;
+}
+
+.readonly {
+  background-color: #000;
+}
