@@ -22,7 +22,7 @@ class Home_pasien_baru extends CI_Controller
 
 	public function index()
 	{
-		$dokter = $this->m_dokter->get_limit_data();
+		$dokter = $this->m_dokter->get_limit_data_dokter();
 		$data = array(
 			'dokter_data' => $dokter,
 		);
@@ -36,10 +36,19 @@ class Home_pasien_baru extends CI_Controller
 	public function save()
 	{
 
-		$no_rm = $this->m_pasien_daftar->get_limit_pasien_row()->no_rm ?? 0;
-		$no_rm++;
+		$no_rm = $this->m_pasien_daftar->get_limit_pasien_row()->no_rm ?? '000000';
+		$str = (string)((int)(++$no_rm));
+		$str_count = strlen($str);
+
+		$result = '';
+		for ($i = 0; $i < 6 - $str_count; $i++) {
+			$result .= '0';
+		}
+
+		$result .= (string)((int)($str));
+
 		$data = array(
-			'no_rm' => $no_rm,
+			'no_rm' => $result,
 			'no_identitas' => $this->input->post('no_identitas'),
 			'nama' => $this->input->post('nama'),
 			'jk' => $this->input->post('jk') == 'Laki-laki' ? 'L' : 'P',

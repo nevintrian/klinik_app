@@ -36,12 +36,45 @@
 									<h6>Pilih Dokter</h6>
 								</div>
 								<div>
-									<h6><?= date('D, d-m-Y') ?></h6>
+									<?php
+									$hari = date("D");
+									$hari_ini = '';
+									switch ($hari) {
+										case 'Sun':
+											$hari_ini = "Minggu";
+											break;
 
+										case 'Mon':
+											$hari_ini = "Senin";
+											break;
 
+										case 'Tue':
+											$hari_ini = "Selasa";
+											break;
+
+										case 'Wed':
+											$hari_ini = "Rabu";
+											break;
+
+										case 'Thu':
+											$hari_ini = "Kamis";
+											break;
+
+										case 'Fri':
+											$hari_ini = "Jumat";
+											break;
+
+										case 'Sat':
+											$hari_ini = "Sabtu";
+											break;
+
+										default:
+											$hari_ini = "Tidak di ketahui";
+											break;
+									}
+									?>
+									<h6><?= $hari_ini . ', ' . date('d-m-Y') ?></h6>
 									<br>
-
-
 									<!-- /.card-header -->
 									<div class="card-body table-responsive p-0">
 										<table class="table table-hover text-nowrap">
@@ -52,18 +85,43 @@
 													<th>Poli</th>
 													<th>Hari Praktek</th>
 													<th>Jam Praktek</th>
+													<th>Kuota</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php foreach ($dokter_data as $dokter) { ?>
 													<tr>
-														<td>
-															<div class="btn btn-primary btn-sm btn-dokter" onclick="run(1, 2);" data-dokter_id="<?= $dokter->id; ?>" data-dokter_nama="<?= $dokter->nama; ?>" data-poli_nama="<?= $dokter->poli_nama; ?>" data-jam_praktek="<?= $dokter->jam_praktek; ?>">Pilih Dokter</div>
-														</td>
+														<?php
+														$data = explode(',', $dokter->hari_praktek);
+														$status = false;
+														foreach ($data as $d) {
+															$d = str_replace(' ', '', $d);
+															$d = ucfirst($d);
+															if ($d == $hari_ini) {
+																$status = true;
+																break;
+															}
+														}
+														?>
+														<?php if ($dokter->kuota >= 10) { ?>
+															<td>
+																<div class="btn btn-primary btn-sm btn-dokter">Kuota Penuh</div>
+															</td>
+														<?php } else if ($status == false) { ?>
+															<td>
+																<div class="btn btn-primary btn-sm btn-dokter">Dokter Libur</div>
+															</td>
+														<?php } else { ?>
+															<td>
+																<div class="btn btn-primary btn-sm btn-dokter" onclick="run(1, 2);" data-dokter_id="<?= $dokter->id; ?>" data-dokter_nama="<?= $dokter->nama; ?>" data-poli_nama="<?= $dokter->poli_nama; ?>" data-jam_praktek="<?= $dokter->jam_praktek; ?>">Pilih Dokter</div>
+															</td>
+														<?php } ?>
+
 														<td><?= $dokter->nama ?></td>
 														<td><?= $dokter->poli_nama ?></td>
 														<td><?= $dokter->hari_praktek ?></td>
 														<td><?= $dokter->jam_praktek ?></td>
+														<td><?= $dokter->kuota ?> / 10</td>
 													</tr>
 												<?php } ?>
 											</tbody>
@@ -96,7 +154,7 @@
 								</div>
 								<div class="text-center mt-2">
 									<div class="btn btn-secondary btn-sm" onclick="run(2, 1);">Kembali</div>
-									<div class="btn btn-primary btn-sm btn-cari" onclick="run(2, 3);">Selanjutnya</div>
+									<div class="btn btn-primary btn-sm btn-cari">Selanjutnya</div>
 								</div>
 							</div>
 
@@ -282,19 +340,37 @@
 	$("#step-1").css("opacity", 1);
 
 	function run(hideTab, showTab) {
-		// Progress bar
-		$("#step-" + hideTab).css("opacity", "25%");
-		$("#step-" + showTab).css("opacity", "1");
+		if (hideTab == 2 && showTab == 3) {
+			if (document.getElementById("no_rm").value.length == 0 || document.getElementById("tanggal_lahir").value.length == 0) {
+				alert("Data belum diisi!")
+			} else {
+				get()
+			}
+		} else if (hideTab == 3 && showTab == 4) {
+			if (document.getElementById("akses_bayar").value.length == 0 || document.getElementById("keluhan").value.length == 0) {
+				alert("Data belum diisi!")
+			} else {
+				get()
+			}
+		} else {
+			get()
+		}
 
-		// Switch tab
-		$("#tab-" + hideTab).css("display", "none");
-		$("#tab-" + showTab).css("display", "block");
-		$("input").css("background", "#fff");
+		function get() {
+			// Progress bar
+			$("#step-" + hideTab).css("opacity", "25%");
+			$("#step-" + showTab).css("opacity", "1");
 
-		const akses_bayar = $('#akses_bayar').val();
-		const keluhan = $('#keluhan').val();
-		$('.akses_bayar').val(akses_bayar);
-		$('.keluhan').val(keluhan);
+			// Switch tab
+			$("#tab-" + hideTab).css("display", "none");
+			$("#tab-" + showTab).css("display", "block");
+			$("input").css("background", "#fff");
+
+			const akses_bayar = $('#akses_bayar').val();
+			const keluhan = $('#keluhan').val();
+			$('.akses_bayar').val(akses_bayar);
+			$('.keluhan').val(keluhan);
+		}
 
 	}
 
@@ -308,14 +384,11 @@
 		$('.dokter_id').val(dokter_id);
 		$('.dokter_nama').val(dokter_nama);
 		$('.jam_praktek').val(jam_praktek)
-		console.log(dokter_nama);
 	})
 
 	$('.btn-cari').on('click', function() {
 		const no_rm = $('#no_rm').val();
 		const tanggal_lahir = $('#tanggal_lahir').val();
-		console.log(no_rm)
-		console.log(tanggal_lahir)
 		$.ajax({
 			type: 'POST',
 			url: '<?php echo base_url('home_pasien_lama/get_data_pasien') ?>',
@@ -326,6 +399,18 @@
 				'tanggal_lahir': tanggal_lahir
 			},
 			success: function(resp) {
+				console.log(no_rm)
+				if (no_rm) {
+					if (resp == null) {
+						alert('Data tidak ditemukan atau tanggal lahir tidak sesuai!')
+					} else if (resp.jumlah_batal >= 5) {
+						alert('No RM anda diblokir, silahkan daftar onsite atau hubungi admin!')
+					} else {
+						run(2, 3)
+					}
+				} else {
+					alert('Data belum diisi')
+				}
 				$('.no_rm').val(no_rm);
 				$('.tanggal_lahir').val(tanggal_lahir);
 				$('.nama').val(resp.nama);

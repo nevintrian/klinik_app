@@ -226,7 +226,11 @@ $id_pasien = explode("=", $idstr)[1];
 								</div>
 								<div>
 									<h5 style="margin-bottom: -25px; font-size:1.06em; font-weight: 550;" class="">No BPJS</h5><br>
-									<p><?= $pasien->no_bpjs ?></p>
+									<p><?= $pasien->no_bpjs == '' ? '-' : $pasien->no_bpjs ?></p>
+								</div>
+								<div>
+									<h5 style="margin-bottom: -25px; font-size:1.06em; font-weight: 550;" class="">Status Blokir</h5><br>
+									<p><?= $pasien->blokir == '1' ? 'Ya' : 'Tidak' ?></p>
 								</div>
 							</div>
 						</div>
@@ -348,6 +352,14 @@ $id_pasien = explode("=", $idstr)[1];
 										<b class="">No BPJS</b>
 										<input type="text" class="form-control mb-3" name="no_bpjs" value="<?= $pasien->no_bpjs ?>" required>
 									</div>
+									<div>
+										<b class="">Status Blokir</b>
+										<select class="form-control mb-3" id="blokir" name="blokir" required>
+											<option value="">-- Pilih Status Blokir --</option>
+											<option value="1" <?= $pasien->blokir == '1' ? 'selected' : '' ?>>Ya</option>
+											<option value="0" <?= $pasien->blokir == '0' ? 'selected' : '' ?>>Tidak</option>
+										</select>
+									</div>
 									<input type="hidden" class="form-control mb-3" name="id" value="<?= $pasien->id ?>">
 								</div>
 							</div>
@@ -449,6 +461,7 @@ $id_pasien = explode("=", $idstr)[1];
 
 					</div>
 					<div class="modal-footer">
+						<a href="" class="btn btn-info">Cetak</a>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
 					</div>
 				</div>

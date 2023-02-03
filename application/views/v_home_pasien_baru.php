@@ -35,7 +35,44 @@
 									<h6>Pilih Dokter</h6>
 								</div>
 								<div>
-									<h6><?= date('D, d-m-Y') ?></h6>
+									<?php
+									$hari = date("D");
+									$hari_ini = '';
+									switch ($hari) {
+										case 'Sun':
+											$hari_ini = "Minggu";
+											break;
+
+										case 'Mon':
+											$hari_ini = "Senin";
+											break;
+
+										case 'Tue':
+											$hari_ini = "Selasa";
+											break;
+
+										case 'Wed':
+											$hari_ini = "Rabu";
+											break;
+
+										case 'Thu':
+											$hari_ini = "Kamis";
+											break;
+
+										case 'Fri':
+											$hari_ini = "Jumat";
+											break;
+
+										case 'Sat':
+											$hari_ini = "Sabtu";
+											break;
+
+										default:
+											$hari_ini = "Tidak di ketahui";
+											break;
+									}
+									?>
+									<h6><?= $hari_ini . ', ' . date('d-m-Y') ?></h6>
 									<br>
 									<!-- /.card-header -->
 									<div class="card-body table-responsive p-0">
@@ -47,18 +84,42 @@
 													<th>Poli</th>
 													<th>Hari Praktek</th>
 													<th>Jam Praktek</th>
+													<th>Kuota</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php foreach ($dokter_data as $dokter) { ?>
 													<tr>
-														<td>
-															<div class="btn btn-primary btn-sm btn-dokter" onclick="run(1, 2);" data-dokter_id="<?= $dokter->id; ?>" data-dokter_nama="<?= $dokter->nama; ?>" data-poli_nama="<?= $dokter->poli_nama; ?>" data-jam_praktek="<?= $dokter->jam_praktek; ?>">Pilih Dokter</div>
-														</td>
+														<?php
+														$data = explode(',', $dokter->hari_praktek);
+														$status = false;
+														foreach ($data as $d) {
+															$d = str_replace(' ', '', $d);
+															$d = ucfirst($d);
+															if ($d == $hari_ini) {
+																$status = true;
+																break;
+															}
+														}
+														?>
+														<?php if ($dokter->kuota >= 10) { ?>
+															<td>
+																<div class="btn btn-primary btn-sm btn-dokter">Kuota Penuh</div>
+															</td>
+														<?php } else if ($status == false) { ?>
+															<td>
+																<div class="btn btn-primary btn-sm btn-dokter">Dokter Libur</div>
+															</td>
+														<?php } else { ?>
+															<td>
+																<div class="btn btn-primary btn-sm btn-dokter" onclick="run(1, 2);" data-dokter_id="<?= $dokter->id; ?>" data-dokter_nama="<?= $dokter->nama; ?>" data-poli_nama="<?= $dokter->poli_nama; ?>" data-jam_praktek="<?= $dokter->jam_praktek; ?>">Pilih Dokter</div>
+															</td>
+														<?php } ?>
 														<td><?= $dokter->nama ?></td>
 														<td><?= $dokter->poli_nama ?></td>
 														<td><?= $dokter->hari_praktek ?></td>
 														<td><?= $dokter->jam_praktek ?></td>
+														<td><?= $dokter->kuota ?> / 10</td>
 													</tr>
 												<?php } ?>
 											</tbody>
@@ -321,16 +382,6 @@
 
 
 	function run(hideTab, showTab) {
-		// Progress bar
-		$("#step-" + hideTab).css("opacity", "25%");
-		$("#step-" + showTab).css("opacity", "1");
-
-		// Switch tab
-		$("#tab-" + hideTab).css("display", "none");
-		$("#tab-" + showTab).css("display", "block");
-		$("input").css("background", "#fff");
-
-
 		const id = $('#id').val();
 		const no_identitas = $('#no_identitas').val();
 		const nama = $('#nama').val();
@@ -349,6 +400,28 @@
 		const akses_bayar = $('#akses_bayar').val();
 		const no_bpjs = $('#no_bpjs').val();
 
+		// Progress bar
+		if (hideTab == 2 && showTab == 3) {
+			if (no_identitas == '' || nama == '' || keluhan == '' || jk == '' || tempat_lahir == '' || tanggal_lahir == '' || status == '' || agama == '' || gol_darah == '' || alamat == '' || telepon == '' || suku == '' || pendidikan == '' || pekerjaan == '' || akses_bayar == '') {
+				alert("Data belum diisi!")
+			} else {
+				get()
+			}
+		} else {
+			get()
+		}
+
+		function get() {
+			$("#step-" + hideTab).css("opacity", "25%");
+			$("#step-" + showTab).css("opacity", "1");
+
+			// Switch tab
+			$("#tab-" + hideTab).css("display", "none");
+			$("#tab-" + showTab).css("display", "block");
+			$("input").css("background", "#fff");
+		}
+
+
 		$('.id').val(id);
 		$('.no_identitas').val(no_identitas);
 		$('.nama').val(nama);
@@ -366,8 +439,6 @@
 		$('.pekerjaan').val(pekerjaan);
 		$('.akses_bayar').val(akses_bayar);
 		$('.no_bpjs').val(no_bpjs);
-
-
 	}
 
 

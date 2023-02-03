@@ -207,7 +207,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>No RM</label>
-						<select name="pasien_id" class="form-control pasien_id data_pasien" required>
+						<select name="pasien_id" class="pasien_id data_pasien bootstrap-select" data-width="100%" data-live-search="true" required>
 							<option value="">-- Pilih No RM --</option>
 							<?php foreach ($pasien_data as $pasien) : ?>
 								<option value="<?= $pasien->id; ?>"><?= $pasien->no_rm; ?> - <?= $pasien->nama; ?></option>
@@ -228,7 +228,7 @@
 					</div>
 					<div class="form-group">
 						<label>DPJP</label>
-						<select name="dokter_id" class="form-control dokter_id data_dokter" required>
+						<select name="pasien_id" class="dokter_id data_dokter bootstrap-select" data-width="100%" data-live-search="true" required>
 							<option value="">-- Pilih Dokter --</option>
 							<?php foreach ($dokter_data as $dokter) : ?>
 								<option value="<?= $dokter->id; ?>"><?= $dokter->nama; ?></option>
@@ -277,8 +277,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label>No RM</label>
-						<select name="pasien_id" class="form-control pasien_id data_pasien" required>
-							<option value="">-- Pilih No RM --</option>
+						<select name="pasien_id" id="dropdown_pasien_edit" class="pasien_id data_pasien bootstrap-select" data-width="100%" data-live-search="true" required>
 							<?php foreach ($pasien_data as $pasien) : ?>
 								<option value="<?= $pasien->id; ?>"><?= $pasien->no_rm; ?> - <?= $pasien->nama; ?></option>
 							<?php endforeach; ?>
@@ -298,8 +297,7 @@
 					</div>
 					<div class="form-group">
 						<label>DPJP</label>
-						<select name="dokter_id" class="form-control dokter_id data_dokter" required>
-							<option value="">-- Pilih Dokter --</option>
+						<select name="dokter_id" id="dropdown_dokter_edit" class="dokter_id data_dokter bootstrap-select" data-width="100%" data-live-search="true" required>
 							<?php foreach ($dokter_data as $dokter) : ?>
 								<option value="<?= $dokter->id; ?>"><?= $dokter->nama; ?></option>
 							<?php endforeach; ?>
@@ -431,8 +429,12 @@
 
 <script src="<?php echo base_url('templates/plugins/jquery/jquery.min.js'); ?>"></script>
 <script src="<?php echo base_url('templates/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/jquery-3.4.1.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap.bundle.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/bootstrap-select.js'); ?>"></script>
 <script>
 	$(document).ready(function() {
+		$('.bootstrap-select').selectpicker();
 		$('.btn-edit').on('click', function() {
 			const id = $(this).data('id');
 			const pasien_id = $(this).data('pasien_id');
@@ -456,6 +458,10 @@
 			$('.akses_bayar').val(akses_bayar);
 			$('.no_antrian').val(no_antrian);
 			$('.status').val(status);
+			// $('.dokter_nama_placeholder').val(nama);
+
+			$('#dropdown_pasien_edit').selectpicker('val', pasien_id);
+			$('#dropdown_dokter_edit').selectpicker('val', dokter_id);
 			$('#editModal').modal('show');
 		});
 

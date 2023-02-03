@@ -53,7 +53,7 @@
 		<thead>
 			<tr>
 				<th>No</th>
-				<th>Tanggal Daftar</th>
+				<th>Tanggal Kunjungan</th>
 				<th>No RM</th>
 				<th>Nama</th>
 				<th>JK</th>

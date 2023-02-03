@@ -37,6 +37,7 @@
 													<thead>
 														<tr>
 															<th>No</th>
+															<th>No Antrian</th>
 															<th>Tanggal Daftar</th>
 															<th>Nama</th>
 															<th>JK</th>
@@ -55,6 +56,7 @@
 
 															<tr>
 																<td><?= $i ?></td>
+																<td><?= $pasien_data->no_antrian ?></td>
 																<td><?= date("d-m-Y", strtotime($pasien_data->tanggal)) ?></td>
 																<td><?= $pasien_data->nama ?></td>
 																<td><?= $pasien_data->jk ?></td>

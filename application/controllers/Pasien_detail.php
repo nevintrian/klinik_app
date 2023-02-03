@@ -49,6 +49,7 @@ class Pasien_detail extends CI_Controller
 			'pendidikan' => $this->input->post('pendidikan'),
 			'pekerjaan' => $this->input->post('pekerjaan'),
 			'no_bpjs' => $this->input->post('no_bpjs') ?? '-',
+			'blokir' => $this->input->post('blokir'),
 		);
 		$id = $this->input->post('id');
 		$this->m_pasien_detail->update($id, $data);

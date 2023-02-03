@@ -72,7 +72,9 @@
 																		} ?>" href="<?= base_url('/home') ?>">Beranda</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link font-weight-light" href="">Jadwal Dokter</a>
+								<a class="nav-link text-weight-light <?php if (strpos($_SERVER['REQUEST_URI'], "jadwal_dokter") !== false) {
+																			echo "active text-bold";
+																		} ?>" href="<?= base_url('/jadwal_dokter') ?>">Jadwal Dokter</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link font-weight-light" href="">Alur Pendaftaran</a>

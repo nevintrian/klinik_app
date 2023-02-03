@@ -20,7 +20,7 @@
 								<form action="">
 									<div class="d-sm-flex align-items-center mb-3">
 										<div class="form-group mr-3">
-											<label>Tanggal Daftar :</label>
+											<label>Tanggal Kunjungan :</label>
 											<div class="input-group">
 												<div class="input-group-prepend">
 													<span class="input-group-text">
@@ -81,7 +81,7 @@
 										<thead>
 											<tr>
 												<th>No</th>
-												<th>Tanggal Daftar</th>
+												<th>Tanggal Kunjungan</th>
 												<th>No RM</th>
 												<th>Nama</th>
 												<th>JK</th>
@@ -98,7 +98,7 @@
 											?>
 												<tr>
 													<td><?= $i ?></td>
-													<td><?= date("d-m-Y", strtotime($pasien_kunjungan->tanggal)) ?></td>
+													<td><?= date("d-m-Y", strtotime($pasien_kunjungan->pasien_kunjungan_tanggal)) ?></td>
 													<td><?= $pasien_kunjungan->no_rm ?></td>
 													<td><?= $pasien_kunjungan->nama ?></td>
 													<td><?= $pasien_kunjungan->jk ?></td>

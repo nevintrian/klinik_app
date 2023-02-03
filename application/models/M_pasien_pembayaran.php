@@ -19,6 +19,7 @@ class M_pasien_pembayaran extends CI_Model
 		$this->db->join('dokter', 'pasien_kunjungan.dokter_id = dokter.id');
 		$this->db->join('poli', 'dokter.poli_id = poli.id');
 		$this->db->where('pasien_kunjungan.status >', 0);
+		$this->db->where('pasien_kunjungan.tanggal', date('Y-m-d'));
 		$this->db->order_by($this->id, $this->order);
 		return $this->db->get('pasien_kunjungan')->result();
 	}

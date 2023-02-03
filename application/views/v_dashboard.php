@@ -97,7 +97,7 @@
 									<div class="col-lg-3 col-6">
 										<div class="small-box bg-success">
 											<div class="inner">
-												<h3><?= ($pasien_this_month / $pasien) * 100 ?>%</h3>
+												<h3><?= round(($pasien_this_month / $pasien) * 100) ?>%</h3>
 												<p>Pasien Bulan Ini</p>
 											</div>
 										</div>
@@ -143,7 +143,7 @@
 													?>
 														<tr>
 															<td><?= $no ?></td>
-															<td><?= $diagnosis->nama ?></td>
+															<td><?= substr($diagnosis->nama, 0, 50) . ((strlen($diagnosis->nama) > 50) ? '...' : ''); ?></td>
 															<td><?= $diagnosis->jumlah ?></td>
 														</tr>
 													<?php

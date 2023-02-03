@@ -71,7 +71,7 @@
 													<td style="width: 10px"><?= $i ?></td>
 													<td><?= date("d-m-Y", strtotime($diagnosis->tanggal)) ?></td>
 													<td><?= $diagnosis->kode ?></td>
-													<td><?= $diagnosis->nama ?></td>
+													<td><?= substr($diagnosis->nama, 0, 50) . ((strlen($diagnosis->nama) > 50) ? '...' : ''); ?></td>
 													<td><?= $diagnosis->jumlah ?></td>
 												</tr>
 											<?php

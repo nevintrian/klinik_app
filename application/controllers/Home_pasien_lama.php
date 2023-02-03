@@ -18,7 +18,7 @@ class Home_pasien_lama extends CI_Controller
 
 	public function index()
 	{
-		$dokter = $this->m_dokter->get_limit_data();
+		$dokter = $this->m_dokter->get_limit_data_dokter();
 		$data = array(
 			'dokter_data' => $dokter,
 		);

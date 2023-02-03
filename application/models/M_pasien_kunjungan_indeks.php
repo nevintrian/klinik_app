@@ -14,7 +14,7 @@ class M_pasien_kunjungan_indeks extends CI_Model
 
 	function get_limit_data($date_start = 0, $date_end = 0, $poli_id = 0, $akses_bayar = 0, $daftar = 0)
 	{
-		$this->db->select('pasien_kunjungan.*, pasien.*, poli.nama as poli_nama, user.nama as dokter_nama, dokter.*, pasien_kunjungan.id as pasien_kunjungan_id, pasien_kunjungan.status as pasien_kunjungan_status');
+		$this->db->select('pasien_kunjungan.*, pasien.*, poli.nama as poli_nama, user.nama as dokter_nama, dokter.*, pasien_kunjungan.id as pasien_kunjungan_id, pasien_kunjungan.status as pasien_kunjungan_status, pasien_kunjungan.tanggal as pasien_kunjungan_tanggal');
 		$this->db->join('pasien', 'pasien.id = pasien_kunjungan.pasien_id');
 		$this->db->join('dokter', 'dokter.id = pasien_kunjungan.dokter_id');
 		$this->db->join('user', 'user.id = dokter.user_id');

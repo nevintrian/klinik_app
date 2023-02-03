@@ -103,4 +103,11 @@ class M_pasien extends CI_Model
 		$this->db->order_by('pasien_kunjungan.id', $this->order);
 		return $this->db->get('pasien_kunjungan')->row();
 	}
+
+	function update_blokir($no_rm)
+	{
+		$this->db->where('no_rm', $no_rm);
+		$this->db->set('jumlah_batal', 'jumlah_batal+1', FALSE);
+		$this->db->update('pasien');
+	}
 }

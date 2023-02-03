@@ -31,7 +31,7 @@
 												<th>Nama</th>
 												<th>Kategori</th>
 												<th>Satuan</th>
-												<th>Stok</th>
+												<!-- <th>Stok</th> -->
 												<th>Kadaluarsa</th>
 												<th>Action</th>
 											</tr>
@@ -45,10 +45,11 @@
 													<td><?= $obat->nama ?></td>
 													<td><?= $obat->obat_kategori_nama ?></td>
 													<td><?= $obat->obat_satuan_nama ?></td>
-													<td><?= $obat->stok ?></td>
+													<!-- <td><?= $obat->stok ?></td> -->
 													<td><?= date("d-m-Y", strtotime($obat->kadaluarsa)) ?></td>
 													<td>
-														<a href="#" class="btn btn-primary btn-view mb-1" data-id="<?= $obat->id; ?>" data-nama="<?= $obat->nama; ?>" data-stok="<?= $obat->stok; ?>" data-harga_beli="<?= $obat->harga_beli; ?>" data-harga_jual="<?= $obat->harga_jual; ?>" data-kadaluarsa="<?= $obat->kadaluarsa; ?>" data-obat_kategori_nama="<?= $obat->obat_kategori_nama; ?>" data-obat_satuan_nama="<?= $obat->obat_satuan_nama; ?>"><i class="fa fa-eye"></i></a>
+														<!-- data-stok="<?= $obat->stok; ?>" -->
+														<a href="#" class="btn btn-primary btn-view mb-1" data-id="<?= $obat->id; ?>" data-nama="<?= $obat->nama; ?>" data-harga_beli="<?= $obat->harga_beli; ?>" data-harga_jual="<?= $obat->harga_jual; ?>" data-kadaluarsa="<?= $obat->kadaluarsa; ?>" data-obat_kategori_nama="<?= $obat->obat_kategori_nama; ?>" data-obat_satuan_nama="<?= $obat->obat_satuan_nama; ?>"><i class="fa fa-eye"></i></a>
 														<?php
 														if ($this->session->userdata('jabatan') != 'Petugas Pendaftaran') {
 														?>
@@ -113,10 +114,10 @@
 							<?php endforeach; ?>
 						</select>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label>Stok</label>
 						<input type="number" min="1" class="form-control" name="stok" placeholder="Stok" required>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label>Harga Beli</label>
 						<input type="number" class="form-control" name="harga_beli" placeholder="Harga Beli" required>
@@ -174,10 +175,10 @@
 							<?php endforeach; ?>
 						</select>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label>Stok</label>
 						<input type="text" class="form-control stok" name="stok" placeholder="Stok" required>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label>Harga Beli</label>
 						<input type="text" class="form-control harga_beli" name="harga_beli" placeholder="Harga Beli" required>
@@ -226,10 +227,10 @@
 						<label>Satuan</label>
 						<input type="text" class="form-control obat_satuan_nama" name="obat_satuan_nama" placeholder="Satuan" readonly>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label>Stok</label>
 						<input type="text" class="form-control stok" name="stok" placeholder="Stok" readonly>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label>Harga Beli</label>
 						<input type="text" class="form-control harga_beli" name="harga_beli" placeholder="Harga Beli" readonly>
@@ -284,7 +285,7 @@
 		$('.btn-edit').on('click', function() {
 			const id = $(this).data('id');
 			const nama = $(this).data('nama');
-			const stok = $(this).data('stok');
+			// const stok = $(this).data('stok');
 			const harga_beli = $(this).data('harga_beli');
 			const harga_jual = $(this).data('harga_jual');
 			const kadaluarsa = $(this).data('kadaluarsa');
@@ -292,7 +293,7 @@
 			const obat_satuan_id = $(this).data('obat_satuan_id');
 			$('.id').val(id);
 			$('.nama').val(nama);
-			$('.stok').val(stok);
+			// $('.stok').val(stok);
 			$('.harga_beli').val(harga_beli);
 			$('.harga_jual').val(harga_jual);
 			$('.kadaluarsa').val(kadaluarsa);
@@ -304,7 +305,7 @@
 		$('.btn-view').on('click', function() {
 			const id = $(this).data('id');
 			const nama = $(this).data('nama');
-			const stok = $(this).data('stok');
+			// const stok = $(this).data('stok');
 			const harga_beli = $(this).data('harga_beli');
 			const harga_jual = $(this).data('harga_jual');
 			const kadaluarsa = $(this).data('kadaluarsa');
@@ -312,7 +313,7 @@
 			const obat_satuan_nama = $(this).data('obat_satuan_nama');
 			$('.id').val(id);
 			$('.nama').val(nama);
-			$('.stok').val(stok);
+			// $('.stok').val(stok);
 			$('.harga_beli').val(harga_beli);
 			$('.harga_jual').val(harga_jual);
 			$('.kadaluarsa').val(kadaluarsa);

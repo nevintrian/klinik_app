@@ -18,6 +18,7 @@ $id = explode("=", $idstr)[1];
 							<h1 class="m-0">Input Data Pemeriksaan</h1>
 						</div><!-- /.col -->
 						<div class="col-sm-6 text-right">
+							<a class="btn btn-info" href="">Cetak Resume Medis</a>
 							<a class="btn btn-primary" href="pasien_pemeriksaan_input/save_all?id=<?= $id ?>">Selesai Pemeriksaan</a>
 						</div><!-- /.col -->
 					</div><!-- /.row -->
@@ -65,11 +66,22 @@ $id = explode("=", $idstr)[1];
 											</div>
 										</div>
 										<div class="form-group row">
+											<?php
+											function limit_text($text, $limit)
+											{
+												if (str_word_count($text, 0) > $limit) {
+													$words = str_word_count($text, 2);
+													$pos   = array_keys($words);
+													$text  = substr($text, 0, $pos[$limit]) . '...';
+												}
+												return $text;
+											}
+											?>
 											<label class="col-md-3 col-form-label col-form-label-sm text-right">Pilih Diagnosis</label>
 											<div class="col-md-7 pl-0">
 												<select class="bootstrap-select strings" name="diagnosis[]" data-width="100%" data-live-search="true" data-actions-box="true" multiple required>
 													<?php foreach ($diagnosis_data as $diagnosis_data) : ?>
-														<option value="<?= $diagnosis_data->id; ?>"><?= $diagnosis_data->nama; ?></option>
+														<option value="<?= $diagnosis_data->id; ?>"><?= substr($diagnosis_data->nama, 0, 50) . ((strlen($diagnosis_data->nama) > 50) ? '...' : ''); ?></option>
 													<?php endforeach; ?>
 												</select>
 											</div>
@@ -92,7 +104,7 @@ $id = explode("=", $idstr)[1];
 											</div>
 										</div>
 										<div class="text-right mr-5">
-											<button class="btn btn-primary btn-sm" type="submit">Simpan Hasil Pemeriksaan</button>
+											<button class="btn btn-primary" type="submit">Simpan Hasil Pemeriksaan</button>
 										</div>
 									</form>
 								</div>
@@ -131,9 +143,21 @@ $id = explode("=", $idstr)[1];
 												<textarea class="form-control" id="keterangan_obat" name="keterangan_obat" rows="2" placeholder="Keterangan Obat" required></textarea>
 											</div>
 										</div>
+										<div class="form-group row">
+											<label for="keterangan_obat" class="col-md-3 col-form-label col-form-label-sm text-right">Keterangan</label>
+											<div class="col-md-7 pl-0">
+												<select class="form-control" id="keterangan_obat" name="keterangan_obat">
+													<option value="">-- Pilih Keterangan Obat --</option>
+													<option value="3x1/hari setelah makan">3x1/hari setelah makan</option>
+													<option value="2x1/hari setelah makan">2x1/hari setelah makan</option>
+													<option value="3x1/hari sebelum makan">3x1/hari sebelum makan</option>
+													<option value="2x1/hari sebelum makan">2x1/hari sebelum makan</option>
+												</select>
+											</div>
+										</div>
 										<input type="hidden" name="pasien_kunjungan_id" value="<?= $id ?>">
 										<div class="text-right mr-5">
-											<button class="btn btn-primary btn-sm" type="submit">Simpan Resep Obat</button>
+											<button class="btn btn-primary" type="submit">Simpan Resep Obat</button>
 										</div>
 									</form>
 								</div>
@@ -177,7 +201,7 @@ $id = explode("=", $idstr)[1];
 										</tbody>
 									</table>
 									<div class="text-center mt-1">
-										<button class="btn btn-info btn-sm mr-3 pl-4 pr-4 btn-rekam-medik" data-toggle="modal" data-pasien_kunjungan_id="<?= $id ?>" data-target="#exampleModalCenterRiwayatPemeriksaan">Lihat Riwayat Pemeriksaan</button>
+										<button class="btn btn-info mr-3 pl-4 pr-4 btn-rekam-medik" data-toggle="modal" data-pasien_kunjungan_id="<?= $id ?>" data-target="#exampleModalCenterRiwayatPemeriksaan">Lihat Riwayat Pemeriksaan</button>
 									</div>
 								</div>
 								<!-- /.card-body -->

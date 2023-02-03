@@ -38,7 +38,7 @@ class Obat extends CI_Controller
 	{
 		$data = array(
 			'nama' => $this->input->post('nama'),
-			'stok' => $this->input->post('stok'),
+			// 'stok' => $this->input->post('stok'),
 			'harga_beli' => $this->input->post('harga_beli'),
 			'harga_jual' => $this->input->post('harga_jual'),
 			'kadaluarsa' => $this->input->post('kadaluarsa'),
@@ -53,7 +53,7 @@ class Obat extends CI_Controller
 	{
 		$data = array(
 			'nama' => $this->input->post('nama'),
-			'stok' => $this->input->post('stok'),
+			// 'stok' => $this->input->post('stok'),
 			'harga_beli' => $this->input->post('harga_beli'),
 			'harga_jual' => $this->input->post('harga_jual'),
 			'kadaluarsa' => $this->input->post('kadaluarsa'),

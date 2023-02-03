@@ -85,9 +85,11 @@
 									<br>
 									<p>Keterangan</p>
 									<p>Simpan bukti pendaftaran berikut dan bawa pada saat hendak berobat di Klinik Rumah Sehat Keluarga</p>
+
+
 									<div class="text-center mt-4">
-										<script src=""></script>
-										<a href="<?= base_url("home_pasien_cetak_detail/cetak_pdf?no_rm=$pasien->no_rm&tanggal_lahir=$pasien->tanggal_lahir") ?>" class="btn btn-info">Cetak File </a>
+										<a href="<?= base_url("home_pasien_cetak_detail/batalkan?no_rm=$pasien->no_rm&tanggal_lahir=$pasien->tanggal_lahir") ?>" onclick="return confirm('Apa anda yakin ingin membatalkan pendaftaran?');" class="btn btn-danger">Batalkan </a>
+										<a target="_blank" href="<?= base_url("home_pasien_cetak_detail/cetak_pdf?no_rm=$pasien->no_rm&tanggal_lahir=$pasien->tanggal_lahir") ?>" class="btn btn-info">Cetak File </a>
 									</div>
 								</div>
 							</div>

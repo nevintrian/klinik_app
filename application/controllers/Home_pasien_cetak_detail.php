@@ -10,6 +10,7 @@ class Home_pasien_cetak_detail extends CI_Controller
 		parent::__construct();
 		$this->load->helper('html');
 		$this->load->model('m_pasien');
+		$this->load->model('m_pasien_kunjungan');
 		$this->load->model('m_home');
 		$this->load->library('pagination');
 		$this->load->library('upload');
@@ -35,6 +36,17 @@ class Home_pasien_cetak_detail extends CI_Controller
 			$this->load->view('v_home_pasien_cetak_detail', $data);
 			$this->load->view('partials/v_home_footer');
 		}
+	}
+
+	public function batalkan()
+	{
+		$no_rm = $this->input->get('no_rm');
+		$tanggal_lahir = $this->input->get('tanggal_lahir');
+		$pasien_kunjungan_id = $this->m_pasien->get_by_no_rm($no_rm, $tanggal_lahir)->pasien_kunjungan_id;
+
+		$this->m_pasien->update_blokir($no_rm);
+		$this->m_pasien_kunjungan->delete($pasien_kunjungan_id);
+		redirect(site_url('home'));
 	}
 
 	public function cetak_pdf()
