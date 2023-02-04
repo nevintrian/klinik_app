@@ -164,7 +164,7 @@
 					</table>
 
 					<p class="text-center">Data Resep Obat</p>
-					<table class="table table-sm">
+					<table class="table table-bordered table-responsive-md">
 						<thead>
 							<th class="pl-4">Nama Obat</th>
 							<th class="pr-4">Satuan</th>
@@ -243,7 +243,7 @@
 				</table>
 
 				<p class="text-center">Data Resep Obat</p>
-				<table class="table table-sm">
+				<table class="table table-bordered table-responsive-md">
 					<thead>
 						<th class="pl-4">Nama Obat</th>
 						<th class="pr-4">Satuan</th>
@@ -375,7 +375,6 @@
 						resp.forEach(e => {
 							let total = e.harga_jual * e.jumlah
 							total_harga += total
-							console.log(e)
 							$('#data-table1').append(
 								`<tr>
 									<td class="pl-4">${e.nama}</td>
@@ -394,7 +393,7 @@
 			$('#detailModal').modal('show');
 		});
 		$('#detailModal').on('hidden.bs.modal', function() {
-			$('#data-table').empty()
+			$('#data-table1').empty()
 			$('.total_harga').empty()
 		})
 

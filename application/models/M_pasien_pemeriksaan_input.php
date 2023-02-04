@@ -50,6 +50,18 @@ class M_pasien_pemeriksaan_input extends CI_Model
 		return $this->db->get($this->table)->row();
 	}
 
+	function get_limit_data_pasien_row_cetak($id)
+	{
+		$this->db->select('pasien_kunjungan.*, pasien.*, poli.nama as poli_nama, user.nama as dokter_nama, dokter.*, pasien_kunjungan.id as pasien_kunjungan_id, pasien_kunjungan.status as pasien_kunjungan_status, pasien.tanggal as pasien_tanggal, pasien_kunjungan.tanggal as pasien_kunjungan_tanggal');
+		$this->db->join('pasien', 'pasien.id = pasien_kunjungan.pasien_id');
+		$this->db->join('dokter', 'dokter.id = pasien_kunjungan.dokter_id');
+		$this->db->join('user', 'user.id = dokter.user_id');
+		$this->db->join('poli', 'dokter.poli_id = poli.id');
+		$this->db->where('pasien_kunjungan.id', $id);
+		$this->db->order_by($this->id, $this->order);
+		return $this->db->get($this->table)->row();
+	}
+
 	function insert($data)
 	{
 		$this->db->insert($this->table, $data);

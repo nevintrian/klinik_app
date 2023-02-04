@@ -14,10 +14,12 @@ class M_pasien_pembayaran extends CI_Model
 
 	function get_limit_data()
 	{
-		$this->db->select('pasien.*, poli.nama as poli_nama, pasien_kunjungan.akses_bayar as pasien_kunjungan_akses_bayar, pasien_kunjungan.id as pasien_kunjungan_id, pasien_kunjungan.status as pasien_kunjungan_status');
+		$this->db->select('pasien.*, poli.nama as poli_nama, pasien_kunjungan.akses_bayar as pasien_kunjungan_akses_bayar, pasien_kunjungan.id as pasien_kunjungan_id, pasien_kunjungan.status as pasien_kunjungan_status, user.nama as dokter_nama, pasien_pembayaran.total_harga as total_harga, pasien_pembayaran.id as pasien_pembayaran_id');
 		$this->db->join('pasien', 'pasien.id = pasien_kunjungan.pasien_id');
 		$this->db->join('dokter', 'pasien_kunjungan.dokter_id = dokter.id');
+		$this->db->join('user', 'dokter.user_id = user.id');
 		$this->db->join('poli', 'dokter.poli_id = poli.id');
+		$this->db->join('pasien_pembayaran', 'pasien_pembayaran.pasien_kunjungan_id = pasien_kunjungan.id');
 		$this->db->where('pasien_kunjungan.status >', 0);
 		$this->db->where('pasien_kunjungan.tanggal', date('Y-m-d'));
 		$this->db->order_by($this->id, $this->order);

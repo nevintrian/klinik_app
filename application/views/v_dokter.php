@@ -106,7 +106,15 @@
 					</div>
 					<div class="form-group">
 						<label>Hari Praktek</label>
-						<input type="text" class="form-control" name="hari_praktek" placeholder="Hari Praktek" required>
+						<select class="bootstrap-select strings" name="hari_praktek[]" data-width="100%" data-live-search="true" data-actions-box="true" multiple required>
+							<option value="Senin">Senin</option>
+							<option value="Selasa">Selasa</option>
+							<option value="Rabu">Rabu</option>
+							<option value="Kamis">Kamis</option>
+							<option value="Jumat">Jumat</option>
+							<option value="Sabtu">Sabtu</option>
+							<option value="Minggu">Minggu</option>
+						</select>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -143,7 +151,6 @@
 					<div class="form-group">
 						<label>Spesialis</label>
 						<select name="poli_id" class="form-control poli_id" required>
-							<option value="">-- Pilih Spesialis --</option>
 							<?php foreach ($poli_data as $poli) : ?>
 								<option value="<?= $poli->id; ?>"><?= $poli->nama; ?></option>
 							<?php endforeach; ?>
@@ -155,7 +162,15 @@
 					</div>
 					<div class="form-group">
 						<label>Hari Praktek</label>
-						<input type="text" class="form-control hari_praktek" name="hari_praktek" placeholder="Hari Praktek" required>
+						<select class="bootstrap-select strings" id="dropdown_dokter_edit" name="hari_praktek[]" data-width="100%" data-live-search="true" data-actions-box="true" multiple required>
+							<option value="Senin">Senin</option>
+							<option value="Selasa">Selasa</option>
+							<option value="Rabu">Rabu</option>
+							<option value="Kamis">Kamis</option>
+							<option value="Jumat">Jumat</option>
+							<option value="Sabtu">Sabtu</option>
+							<option value="Minggu">Minggu</option>
+						</select>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -236,6 +251,7 @@
 <script src="<?php echo base_url('templates/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 <script>
 	$(document).ready(function() {
+		$('.bootstrap-select').selectpicker();
 		$('.btn-edit').on('click', function() {
 			const id = $(this).data('id');
 			const nama = $(this).data('nama');
@@ -250,6 +266,8 @@
 			$('.jam_praktek').val(jam_praktek);
 			$('.hari_praktek').val(hari_praktek);
 			$('#editModal').modal('show');
+			$('#dropdown_dokter_edit').selectpicker('val', hari_praktek.split(', '));
+
 		});
 
 		$('.btn-view').on('click', function() {

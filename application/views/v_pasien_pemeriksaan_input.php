@@ -18,7 +18,7 @@ $id = explode("=", $idstr)[1];
 							<h1 class="m-0">Input Data Pemeriksaan</h1>
 						</div><!-- /.col -->
 						<div class="col-sm-6 text-right">
-							<a class="btn btn-info" href="">Cetak Resume Medis</a>
+							<a target="_blank" class="btn btn-info" href="pasien_pemeriksaan_input/cetak_pdf?id=<?= $id ?>">Cetak Resume Medis</a>
 							<a class="btn btn-primary" href="pasien_pemeriksaan_input/save_all?id=<?= $id ?>">Selesai Pemeriksaan</a>
 						</div><!-- /.col -->
 					</div><!-- /.row -->
@@ -137,12 +137,7 @@ $id = explode("=", $idstr)[1];
 												<input type="number" class="form-control " id="jumlah" name="jumlah" placeholder="" required>
 											</div>
 										</div>
-										<div class="form-group row">
-											<label for="keterangan_obat" class="col-md-3 col-form-label col-form-label-sm text-right">Keterangan</label>
-											<div class="col-md-7 pl-0">
-												<textarea class="form-control" id="keterangan_obat" name="keterangan_obat" rows="2" placeholder="Keterangan Obat" required></textarea>
-											</div>
-										</div>
+
 										<div class="form-group row">
 											<label for="keterangan_obat" class="col-md-3 col-form-label col-form-label-sm text-right">Keterangan</label>
 											<div class="col-md-7 pl-0">
@@ -370,21 +365,25 @@ $id = explode("=", $idstr)[1];
 					'pasien_kunjungan_id': pasien_kunjungan_id
 				},
 				success: function(resp) {
+					console.log(resp)
 					resp.forEach((e, i) => {
+						let obat = e.resep.map(e => e.nama).join(', ')
+						let diagnosis = e.diagnosis.map(e => e.nama).join(', ')
+						let tindakan = e.tindakan.map(e => e.nama).join(', ')
 						$('#data-summary').append(
 							`<tr>
 									<td class="pl-4">${i+1}</td>
-									<td class="pl-4">${e.dokter_nama}</td>
-									<td class="pr-4">${e.poli_nama}</td>
-									<td class="pr-4">${e.pasien_kunjungan_tanggal}</td>
+									<td class="pl-4">${e.pasien['dokter_nama']}</td>
+									<td class="pr-4">${e.pasien['poli_nama']}</td>
+									<td class="pr-4">${e.pasien['pasien_kunjungan_tanggal']}</td>
 									<td>
-											S(Subjective) = data ambil dari anamnesa/keluhan
+											S(Subjective) = ${e.pasien['keluhan']}
 											<br>
-											O(Objective) = data diambil dari tekanan dara , riwayat alergi riwayat penyakit dalam
+											O(Objective) = Tekanan Darah = ${e.pemeriksaan['td']}, Riwayat Alergi = ${e.pemeriksaan['ra']}
 											<br>
-											A(Assesment) = data diambil dari diagnosis, tindakan
+											A(Assesment) = (Diagnosis = ${diagnosis}), (Tindakan = ${tindakan})
 											<br>
-											P(Plan) = data diambil dari obat
+											P(Plan) = ${obat}
 										</td>
 								</tr>`
 						);

@@ -513,7 +513,6 @@
 		});
 
 		$('.data_dokter').change(function() {
-			console.log('abc');
 			var id = $(this).val();
 			$.ajax({
 				type: 'POST',

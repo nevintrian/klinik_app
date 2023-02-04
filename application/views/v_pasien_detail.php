@@ -461,7 +461,7 @@ $id_pasien = explode("=", $idstr)[1];
 
 					</div>
 					<div class="modal-footer">
-						<a href="" class="btn btn-info">Cetak</a>
+						<a target="_blank" id="link_cetak" class="btn btn-info">Cetak</a>
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
 					</div>
 				</div>
@@ -507,6 +507,7 @@ $id_pasien = explode("=", $idstr)[1];
 		<script>
 			$('.btn-lihat').on('click', function() {
 				const id = $(this).data('id');
+				document.getElementById("link_cetak").href = `pasien_detail/cetak_pdf?id=${id}`;
 				$.ajax({
 					type: 'POST',
 					url: '<?php echo base_url('pasien_detail/get_data_pasien') ?>',
@@ -516,7 +517,6 @@ $id_pasien = explode("=", $idstr)[1];
 						'pasien_kunjungan_id': id
 					},
 					success: function(resp) {
-						console.log(resp)
 						$('.no_rm').html(resp.pasien[0].no_rm);
 						$('.tanggal').html(resp.pasien[0].tanggal);
 						$('.poli_nama').html(resp.pasien[0].poli_nama);
@@ -575,21 +575,23 @@ $id_pasien = explode("=", $idstr)[1];
 					},
 					success: function(resp) {
 						resp.forEach((e, i) => {
-
+							let obat = e.resep.map(e => e.nama).join(', ')
+							let diagnosis = e.diagnosis.map(e => e.nama).join(', ')
+							let tindakan = e.tindakan.map(e => e.nama).join(', ')
 							$('#data-summary').append(
 								`<tr>
 									<td class="pl-4">${i+1}</td>
-									<td class="pl-4">${e.dokter_nama}</td>
-									<td class="pr-4">${e.poli_nama}</td>
-									<td class="pr-4">${e.pasien_kunjungan_tanggal}</td>
+									<td class="pl-4">${e.pasien['dokter_nama']}</td>
+									<td class="pr-4">${e.pasien['poli_nama']}</td>
+									<td class="pr-4">${e.pasien['pasien_kunjungan_tanggal']}</td>
 									<td>
-											S(Subjective) = data ambil dari anamnesa/keluhan
+											S(Subjective) = ${e.pasien['keluhan']}
 											<br>
-											O(Objective) = data diambil dari tekanan dara , riwayat alergi riwayat penyakit dalam
+											O(Objective) = Tekanan Darah = ${e.pemeriksaan['td']}, Riwayat Alergi = ${e.pemeriksaan['ra']}
 											<br>
-											A(Assesment) = data diambil dari diagnosis, tindakan
+											A(Assesment) = (Diagnosis = ${diagnosis}), (Tindakan = ${tindakan})
 											<br>
-											P(Plan) = data diambil dari obat
+											P(Plan) = ${obat}
 										</td>
 								</tr>`
 							);

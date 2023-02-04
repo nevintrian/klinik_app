@@ -399,7 +399,6 @@
 				'tanggal_lahir': tanggal_lahir
 			},
 			success: function(resp) {
-				console.log(no_rm)
 				if (no_rm) {
 					if (resp == null) {
 						alert('Data tidak ditemukan atau tanggal lahir tidak sesuai!')

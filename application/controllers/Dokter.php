@@ -39,7 +39,7 @@ class Dokter extends CI_Controller
 		$data = array(
 			'user_id' => $this->input->post('user_id'),
 			'poli_id' => $this->input->post('poli_id'),
-			'hari_praktek' => $this->input->post('hari_praktek'),
+			'hari_praktek' => join(", ", $this->input->post('hari_praktek')),
 			'jam_praktek' => $this->input->post('jam_praktek'),
 		);
 		$this->m_dokter->insert($data);
@@ -51,7 +51,7 @@ class Dokter extends CI_Controller
 		$data = array(
 			'user_id' => $this->input->post('user_id'),
 			'poli_id' => $this->input->post('poli_id'),
-			'hari_praktek' => $this->input->post('hari_praktek'),
+			'hari_praktek' => join(", ", $this->input->post('hari_praktek')),
 			'jam_praktek' => $this->input->post('jam_praktek'),
 		);
 		$this->m_dokter->update($this->input->post('id'), $data);
