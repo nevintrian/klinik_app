@@ -57,10 +57,14 @@ class Dashboard extends CI_Controller
 		if ($this->session->userdata('jabatan') == 'Dokter') {
 			$id = $this->session->userdata('id');
 			$dokter = $this->db->query("SELECT id FROM dokter where user_id = $id")->row();
-			$total = $this->db->query("SELECT count(id) as count FROM pasien_kunjungan where dokter_id = $dokter->id and status=1")->row();
+			if ($dokter) {
+				$total = $this->db->query("SELECT count(id) as count FROM pasien_kunjungan where dokter_id = $dokter->id and status=1")->row()->count;
+			} else {
+				$total = 0;
+			}
 
 			$data = array(
-				'total_pasien' => $total->count,
+				'total_pasien' => $total,
 			);
 		}
 

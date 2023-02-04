@@ -97,7 +97,12 @@
 									<div class="col-lg-3 col-6">
 										<div class="small-box bg-success">
 											<div class="inner">
-												<h3><?= round(($pasien_this_month / $pasien) * 100) ?>%</h3>
+												<?php if ($pasien == 0) {
+													$divider = 1;
+												} else {
+													$divider = $pasien;
+												} ?>
+												<h3><?= round(($pasien_this_month / $divider) * 100) ?>%</h3>
 												<p>Pasien Bulan Ini</p>
 											</div>
 										</div>
