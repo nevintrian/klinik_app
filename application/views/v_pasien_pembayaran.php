@@ -379,7 +379,11 @@
 
 						$('.total_harga_tindakan').html(`<b>Rp${total_harga_tindakan}</b>`);
 						$('.total_harga_resep').html(`<b>Rp${total_harga_resep}</b>`);
-						$('.total_bayar').html(`<b>Total Bayar : Rp${total_harga_resep + total_harga_tindakan}</b>`);
+						if (pasien_akses_bayar == 'BPJS') {
+							$('.total_bayar').html(`<b>Total Bayar : Rp${total_harga_resep + total_harga_tindakan} (GRATIS)</b>`);
+						} else {
+							$('.total_bayar').html(`<b>Total Bayar : Rp${total_harga_resep + total_harga_tindakan}</b>`);
+						}
 						if (pasien_akses_bayar == 'Sosial') {
 							$data = `<div class="form-group m-5">
 									<label>Pasien Sosial Bayar : </label>
@@ -397,6 +401,7 @@
 			$('#data-table').empty()
 			$('#data-table1').empty()
 			$('.total_harga').empty()
+			$('.pasien_sosial').empty()
 		})
 
 
@@ -457,7 +462,11 @@
 
 						$('.total_harga_tindakan').html(`<b>Rp${total_harga_tindakan}</b>`);
 						$('.total_harga_resep').html(`<b>Rp${total_harga_resep}</b>`);
-						$('.total_bayar').html(`<b>Total Bayar : Rp${total_harga_resep + total_harga_tindakan}</b>`);
+						if (pasien_akses_bayar == 'BPJS') {
+							$('.total_bayar').html(`<b>Total Bayar : Rp${total_harga_resep + total_harga_tindakan} (GRATIS)</b>`);
+						} else {
+							$('.total_bayar').html(`<b>Total Bayar : Rp${total_harga_resep + total_harga_tindakan}</b>`);
+						}
 						if (pasien_akses_bayar == 'Sosial') {
 							$data = `<div class="form-group m-5">
 									<label>Pasien Sosial Bayar : </label>
@@ -477,6 +486,7 @@
 			$('#data-table2').empty()
 			$('#data-table3').empty()
 			$('.total_harga').empty()
+			$('.pasien_sosial').empty()
 		})
 
 		$('#datatables').DataTable();

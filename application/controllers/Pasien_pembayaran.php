@@ -34,7 +34,9 @@ class Pasien_pembayaran extends CI_Controller
 		$id = $this->input->post('pasien_kunjungan_id');
 		$pasien_bayar = $this->input->post('pasien_sosial_bayar');
 		$pasien_pembayaran_id = $this->input->post('pasien_pembayaran_id');
-		$this->m_pasien_pembayaran->update($pasien_pembayaran_id, ['total_harga' => $pasien_bayar]);
+		if ($pasien_bayar != null) {
+			$this->m_pasien_pembayaran->update($pasien_pembayaran_id, ['total_harga' => $pasien_bayar]);
+		}
 		$data = array(
 			'status' => 4,
 		);

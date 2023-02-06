@@ -40,8 +40,8 @@ class Pasien_kunjungan extends CI_Controller
 	{
 		$dokter_id = $this->input->post('dokter_id');
 		$date = date('Y-m-d');
-		$data = $this->db->query("SELECT no_antrian FROM pasien_kunjungan where pasien_kunjungan.dokter_id = $dokter_id and pasien_kunjungan.tanggal = '$date' order by pasien_kunjungan.id desc")->row();
 
+		$data = $this->db->query("SELECT no_antrian FROM pasien_kunjungan where pasien_kunjungan.dokter_id = $dokter_id and pasien_kunjungan.tanggal = '$date' order by pasien_kunjungan.id desc")->row();
 		if ($data != null) {
 			$huruf = $data->no_antrian[0];
 			$angka = "";

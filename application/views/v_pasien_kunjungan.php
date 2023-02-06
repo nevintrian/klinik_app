@@ -228,7 +228,7 @@
 					</div>
 					<div class="form-group">
 						<label>DPJP</label>
-						<select name="pasien_id" class="dokter_id data_dokter bootstrap-select" data-width="100%" data-live-search="true" required>
+						<select name="dokter_id" class="dokter_id data_dokter bootstrap-select" data-width="100%" data-live-search="true" required>
 							<option value="">-- Pilih Dokter --</option>
 							<?php foreach ($dokter_data as $dokter) : ?>
 								<option value="<?= $dokter->id; ?>"><?= $dokter->nama; ?></option>

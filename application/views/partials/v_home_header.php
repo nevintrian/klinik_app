@@ -77,19 +77,19 @@
 																		} ?>" href="<?= base_url('/jadwal_dokter') ?>">Jadwal Dokter</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link font-weight-light" href="">Alur Pendaftaran</a>
+								<a class="nav-link font-weight-light" href="<?= base_url('/home') ?>">Alur Pendaftaran</a>
 							</li>
 							<?php if ($this->session->userdata('nama') != null) { ?>
 								<li class="nav-item">
 									<a class="nav-link font-weight-light <?php if (strpos($_SERVER['REQUEST_URI'], "dashboard") !== false) {
 																				echo "active text-bold";
-																			} ?>" href="dashboard"><?= $this->session->userdata('nama') ?></a>
+																			} ?>" href="<?= base_url('/dashboard') ?>"><?= $this->session->userdata('nama') ?></a>
 								</li>
 							<?php } else { ?>
 								<li class="nav-item">
 									<a class="nav-link text-weight-light <?php if (strpos($_SERVER['REQUEST_URI'], "login") !== false) {
 																				echo "active text-bold";
-																			} ?>" href="login">Login</a>
+																			} ?>" href="<?= base_url('/login') ?>">Login</a>
 								</li>
 							<?php } ?>
 
